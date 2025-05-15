@@ -1,5 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
-import helmet from 'helmet'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
 
 import logger from './config/logger'
@@ -9,7 +8,6 @@ const app = express()
 app.use(cors())
 
 app.get('/health', (req: Request, res: Response) => {
-  logger.info('Um request foi feito para a rota de health')
   res.status(200).json({ status: 'ok' });
 });
 
