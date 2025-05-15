@@ -9,6 +9,7 @@ const app = express()
 app.use(cors())
 
 app.get('/health', (req: Request, res: Response) => {
+  logger.info('Um request foi feito para a rota de health')
   res.status(200).json({ status: 'ok' });
 });
 
