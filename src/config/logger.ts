@@ -2,7 +2,7 @@ import winston from 'winston';
 
 const logger = winston.createLogger({
   level: "debug",
-  defaultMeta: { service: "API GATEWAY" },
+  defaultMeta: { service: "SERVIÇO DE TESTE" },
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.printf(({ level, message, timestamp, service }) => {
