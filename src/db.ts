@@ -22,6 +22,7 @@ export const connectDB = async () => {
 
   // Se ainda não existe conexão, cria uma nova
 
+  logger.debug("Conectando ao banco de dados: " + process.env.DB_HOST)
 
   const connection = await createConnection({
     name: "default",
