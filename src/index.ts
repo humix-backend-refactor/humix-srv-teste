@@ -1,17 +1,23 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
-import "reflect-metadata"
+import { connectDB } from './db'
 
 import logger from './config/logger'
+import router from './user-routes'
 
 const app = express()
 
 app.use(cors())
+app.use(express.json())
+
+app.use("/", router)
 
 app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'ok' });
 });
 
-app.listen(8080, () => {
+app.listen(3000, async () => {
     logger.info("Rodando na porta 8080")
+
+    await connectDB()
 })
