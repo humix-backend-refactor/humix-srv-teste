@@ -2,6 +2,9 @@ import express, { Request, Response } from 'express'
 import cors from 'cors'
 import { connectDB } from './db'
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 import logger from './config/logger'
 import router from './user-routes'
 

@@ -21,14 +21,16 @@ export const connectDB = async () => {
   }
 
   // Se ainda não existe conexão, cria uma nova
+
+
   const connection = await createConnection({
     name: "default",
     type: 'postgres',
-    host: process.env.DB_HOST as string,
-    port: process.env.DB_PORT as unknown as number,
-    username: process.env.DB_USER as string,
-    password: process.env.DB_PASS as string,
-    database: process.env.DB_NAME as string,
+    host: process.env.DB_HOST,
+    port: 5432,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
     entities: [User],
     synchronize: true,
     ssl: true,
