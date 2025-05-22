@@ -19,7 +19,7 @@ app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'ok' });
 });
 
-app.listen(3000, async () => {
+app.listen(8080, async () => {
     logger.info("Rodando na porta 8080")
 
     await connectDB()
