@@ -25,4 +25,23 @@ export class UserService {
 
         return this.repo.save(user)
     }
+
+    async login(email: string, senha: string){
+
+        if(email == '' || senha == '' ){
+            throw new Error('Preencha todos os campos')
+        }
+
+        const user = await this.repo.findOne({where: {email: email}})
+
+        if(!user){
+            throw new Error('Usuário não encontrado')
+        }
+
+        if (senha !== user.senha) {
+            throw new Error('Senha incorreta')
+        }
+
+        return user
+    }
 }
