@@ -1,6 +1,7 @@
-import { User } from "./user-model";
-import logger from "./config/logger";
-import { getRepository } from "typeorm";
+import { User } from "./user-model"
+import logger from "./config/logger"
+import { getRepository } from "typeorm"
+var jwt = require('jsonwebtoken')
 
 export class UserService {
     private get repo() {
@@ -33,7 +34,10 @@ export class UserService {
     }
 
     async login(email: string, senha: string){
+        const jwtToken = process.env.JWT_TOKEN
 
+        logger.debug(jwtToken)
+        
         if(email == '' || senha == '' ){
             throw new Error('Preencha todos os campos')
         }
@@ -48,6 +52,7 @@ export class UserService {
             throw new Error('Senha incorreta')
         }
 
-        return user
+        const token = jwt.sign({user: user.id, email: user.email, senha: user.senha})
+        return token
     }
 }
