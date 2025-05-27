@@ -19,6 +19,12 @@ export class UserService {
         newUser.email = email
         newUser.senha = senha
 
+        const emailLivre = await this.repo.findOne({where: {email: email}})
+
+        if(!emailLivre){
+            throw new Error('Este email já está em uso')
+        }
+
         const user = this.repo.create(newUser)
 
         logger.info('Usuario criado com sucesso')
