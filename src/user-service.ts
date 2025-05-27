@@ -52,7 +52,7 @@ export class UserService {
             throw new Error('Senha incorreta')
         }
 
-        const token = jwt.sign({user: user.id, email: user.email, senha: user.senha})
+        const token = jwt.sign({user: user.id, email: user.email, senha: user.senha}, jwtToken)
         return token
     }
 }
