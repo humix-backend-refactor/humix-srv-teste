@@ -62,6 +62,15 @@ export const UserController = {
             res.status(200).json(response.data);
         } catch (error: any) {
             logger.error(error.message);
+            const response = await axios.get(
+                "http://humix-srv-album.album.svc.cluster.local:8080/teste",
+                {
+                    headers: {
+                        Authorization: token
+                    }
+                }
+            );
+            logger.debug(response)
             res.status(500).json({ message: "Erro ao buscar álbuns do usuário" });
         }
     },
