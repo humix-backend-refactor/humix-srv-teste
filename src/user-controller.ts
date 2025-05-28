@@ -58,7 +58,7 @@ export const UserController = {
                     }
                 }
             );
-
+            logger.debug(response)
             res.status(200).json(response.data);
         } catch (error: any) {
             logger.error(error.message);
